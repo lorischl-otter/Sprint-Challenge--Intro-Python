@@ -82,15 +82,49 @@ for c in cities:
 # Tucson: (32.1558,-110.8777)
 # Salt Lake City: (40.7774,-111.9301)
 
-# # TODO Get latitude and longitude values from the user
+# TODO Get latitude and longitude values from the user
+print("""\nYou will now be prompted for a pair of latitude/longitude values.
+Please enter two pairs which provide two corners of a square, and the computer
+will provide which cities fall in that geographic square.\n""")
+
+# Request pairs
+# to do: prevent invalid input
+lat1, lon1 = (input("Enter one comma-separated pair (lat, lon): ")).split(",")
+lat2, lon2 = (input("Enter another comma-separated pair: ")).split(",")
+
+latitudes = [lat1, lat2]
+longitudes = [lon1, lon2]
+
+try:
+    lat1 = float(lat1)
+    lat2 = float(lat2)
+    if (lat1 <= 90 and lat2 <= 90) and (lat1 >= -90 and lat2 >= -90):
+        pass
+    else:
+        print("Your latitude values must be between -90 and 90.")
+except(ValueError):
+    print("Please enter only numeric values.")
 
 
-# def cityreader_stretch(lat1, lon1, lat2, lon2, cities=[]):
-#     # within will hold the cities that fall within the specified region
-#     within = []
+try:
+    lon1 = float(lon1)
+    lon2 = float(lon2)
+    if ((lon1 <= 180 and lon2 <= 180) and (lon1 >= -180 and lon2 >= -180)):
+        pass
+    else:
+        print("Your longitude values must be between -180 and 180")
+except(ValueError):
+    print("Please enter only numeric values.")
 
-#     # TODO Ensure that the lat and lon valuse are all floats
-#     # Go through each city and check to see if it falls within
-#     # the specified coordinates.
+# Generate other two values based on two input points
 
-#     return within
+
+def cityreader_stretch(lat1, lon1, lat2, lon2, cities=[]):
+    # within will hold the cities that fall within the specified region
+    within = []
+
+    # TODO Ensure that the lat and lon valuse are all floats
+    # Go through each city and check to see if it falls within
+    # the specified coordinates.
+
+    return within
